@@ -1,5 +1,5 @@
 *** Settings ***
-
+Default tags    XP-3
 Resource   ${PROJECTROOT}${/}resources${/}common.robot
 Resource   ${PROJECTROOT}${/}resources${/}login-variables.robot
 
