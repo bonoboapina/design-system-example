@@ -45,7 +45,6 @@ pipeline {
       post {
         always {
           step([$class: 'ArtifactArchiver', artifacts: 'results/robot/log.html, results/robot/selenium-*.png'])
-          
           step([$class: 'RobotPublisher',
               disableArchiveOutput: false,
               logFileName: 'results/robot/log.html',
@@ -61,13 +60,6 @@ pipeline {
               importToSameExecution: 'true', projectKey: 'XP',
               serverInstance: 'a8805c85-ed32-453b-b718-302ba21a54e0'])
         }
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        runCompose("-f docker-compose.yml -f compose/test.yml -f compose/robot.yml", "down -v")
-        runDeploy()
       }
     }
   }
