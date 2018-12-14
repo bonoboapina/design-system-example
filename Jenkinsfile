@@ -58,6 +58,10 @@ pipeline {
               passThreshold: 90,
               reportFileName: 'results/robot/report.html',
               unstableThreshold: 100]);
+            step([$class: 'XrayImportBuilder',
+              endpointName: '/robot', importFilePath: 'results/robot/output.xml',
+              importToSameExecution: 'true', projectKey: 'XP',
+              serverInstance: 'a8805c85-ed32-453b-b718-302ba21a54e0'])
         }
       }
     }
