@@ -15,7 +15,7 @@ pipeline {
     stage ('Install rancher-compose') {
       steps{
         sh "wget https://github.com/rancher/rancher-compose/releases/download/v0.12.5/rancher-compose-linux-amd64-v0.12.5.tar.gz"
-        sh "tar xf rancher-compose-v0.12.5.tar.gz"
+        sh "tar xf rancher-compose-linux-amd64-v0.12.5"
         sh "mv rancher-compose-v0.12.5/rancher-compose ./rancher-compose"
         sh "chmod +x rancher-compose"
       }
