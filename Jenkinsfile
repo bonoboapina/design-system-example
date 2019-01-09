@@ -54,11 +54,20 @@ pipeline {
               outputPath: '.',
               passThreshold: 90,
               reportFileName: 'results/robot/report.html',
-              unstableThreshold: 100]);
-            step([$class: 'XrayImportBuilder',
+              unstableThreshold: 100
+              ]);
+          step([$class: 'InfluxDbPublisher',
+              customData: null,
+              customDataMap: null,
+              customPrefix: null,
+              target: 'jenkins_data',
+              selectedTarget: 'jenkins_data' // If you have multiple InfluxDB targets configured, selectedTarget should be set as well
+            ]);
+            /*step([$class: 'XrayImportBuilder',
               endpointName: '/robot', importFilePath: 'results/robot/output.xml',
               importToSameExecution: 'true', projectKey: 'XP',
               serverInstance: 'a8805c85-ed32-453b-b718-302ba21a54e0'])
+              */
         }
       }
     }
