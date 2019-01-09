@@ -12,6 +12,13 @@ pipeline {
       }
     }
 
+    stage ('Install rancher-compose') {
+        sh "wget $composeRancher"
+        sh "tar xf ${composeVer}.tar.gz"
+        sh "mv $untarVer/rancher-compose ./rancher-compose"
+        sh "chmod +x rancher-compose"
+      }
+
     stage('Build') {
       steps {
         runCompose("-f docker-compose.yml -f compose/test.yml -f compose/robot.yml", "build --pull")
